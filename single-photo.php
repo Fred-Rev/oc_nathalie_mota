@@ -4,27 +4,49 @@
 
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-        <section class="photo-content">
+        <section class="single-photo-content">
 
-            <div class="photo-image">
-                <?php the_post_thumbnail('large'); ?>
-            </div>
+            <!-- INFOS -->
+            <div class="single-photo-info">
 
-            <div class="photo-info">
                 <h1><?php the_title(); ?></h1>
 
-                <p>Référence : <?php the_field('reference'); ?></p>
-                <p>Type : <?php the_field('type'); ?></p>
+                <p>
+                    Référence :
+                    <?php echo get_post_meta(get_the_ID(), 'reference', true); ?>
+                </p>
 
-                <p>Catégorie :
+                <p>
+                    Type :
+                    <?php echo get_post_meta(get_the_ID(), 'type', true); ?>
+                </p>
+
+                <p>
+                    Catégorie :
                     <?php the_terms(get_the_ID(), 'categorie'); ?>
                 </p>
 
-                <p>Format :
+                <p>
+                    Format :
                     <?php the_terms(get_the_ID(), 'format'); ?>
                 </p>
 
-                <button id="open-modal">Contact</button>
+                <p>
+                    Année :
+                    <?php echo get_the_date('Y'); ?>
+                </p>
+
+                <button class="photo-contact-button"
+                        data-ref="<?php echo get_post_meta(get_the_ID(), 'reference', true); ?>">
+                    Contact
+                </button>
+
+            </div>
+
+            <!-- IMAGE -->
+            <div class="single-photo-image">
+
+                <?php the_post_thumbnail('large'); ?>
 
             </div>
 
