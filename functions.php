@@ -3,7 +3,8 @@
 function theme_setup() {
 
     register_nav_menus([
-        'main-menu' => 'Menu principal'
+        'main-menu' => 'Menu principal',
+        'footer-menu' => 'Menu footer'
     ]);
 
     add_theme_support('post-thumbnails');

@@ -1,7 +1,17 @@
 <footer class="site-footer">
 
     <div class="container">
-        <p>&copy; <?php echo date('Y'); ?> Nathalie Mota</p>
+        <nav class="footer-nav">
+            <?php
+            wp_nav_menu([
+                'theme_location' => 'footer-menu',
+                'container' => false,
+                'menu_class' => 'footer-menu'
+            ]);
+            ?>
+        </nav>
+
+        
     </div>
 
 </footer>

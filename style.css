@@ -57,6 +57,32 @@ Version: 1.0
 }
 
 /* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+    border-top: 1px solid black;
+    padding: 12px 20px;
+}
+
+.footer-menu {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-menu a {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+}
+
+/* =========================
    MENU
 ========================= */
 
@@ -90,7 +116,45 @@ Version: 1.0
     border: none;
     cursor: pointer;
 }
+/* =========================
+   RELATED PHOTOS
+========================= */
 
+.related-photos {
+    padding: 60px 0;
+}
+
+.related-photos h2 {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+.related-photos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.photo-block img {
+    width: 100%;
+    height: 40vw;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 768px) {
+
+    .related-photos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-block img {
+        height: 70vw;
+    }
+}
 /* =========================
    MOBILE
 ========================= */
@@ -98,45 +162,77 @@ Version: 1.0
 @media (max-width: 768px) {
 
     .site-header {
-        padding: 16px 20px;
+        padding: 4px 20px;
     }
 
     .header-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 20px; /* espace entre logo et burger */
+        min-height: 30px;
     }
 
     .site-logo img {
-        max-height: 10px; 
+        max-height: 10px;
     }
 
+    /* BOUTON BURGER */
     .burger-menu {
         display: block;
-        margin-left: auto;
-        padding-left: 20px; /* ajoute de l’air */
+        z-index: 1001;
+        font-size: 32px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: black;
     }
 
+    .site-logo img,
+.burger-menu {
+    position: relative;
+    top: -25px;
+}
+    /* NAV FULLSCREEN */
     .main-nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: white;
-        z-index: 999;
+        position: fixed;
+        position: fixed;
+
+    top: 20px;
+    left: 0;
+
+    width: 100%;
+    height: calc(100vh - 20px);
+
+    background: #E00000;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
     }
 
+    .main-nav.active {
+        display: flex;
+    }
+
+    /* MENU */
     .menu {
-        display: none;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
-        padding: 30px 0;
+        gap: 40px;
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
     }
 
-    .menu.active {
-        display: flex;
+    .menu a {
+        color: white;
+        font-size: 44px;
+        text-decoration: none;
+        text-transform: uppercase;
     }
 }
 
@@ -173,5 +269,75 @@ Version: 1.0
 
     .wpcf7 textarea {
         height: 100px;
+    }
+}
+
+/* =========================
+   SINGLE PHOTO
+========================= */
+
+.single-photo {
+    padding: 60px 40px;
+}
+
+.single-photo-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.single-photo-info {
+    width: 40%;
+}
+
+.single-photo-info h1 {
+    font-size: 48px;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.single-photo-info p {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+
+.single-photo-image {
+    width: 60%;
+}
+
+.single-photo-image img {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 768px) {
+
+    .single-photo {
+        padding: 30px 20px;
+    }
+
+    .single-photo-content {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .single-photo-info,
+    .single-photo-image {
+        width: 100%;
+    }
+
+    .single-photo-image img {
+        height: auto;
+    }
+
+    .single-photo-info h1 {
+        font-size: 32px;
     }
 }
