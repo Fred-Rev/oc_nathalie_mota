@@ -75,25 +75,31 @@ body {
 ========================= */
 
 .site-footer {
+    height: 40px;
     border-top: 1px solid black;
-    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer-menu {
     display: flex;
     justify-content: center;
-    gap: 80px;
+    align-items: center;
+    gap: 86px;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
 .footer-menu a {
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    text-transform: uppercase;
     text-decoration: none;
     color: black;
-    text-transform: uppercase;
-    font-size: 16px;
-    letter-spacing: 0.05em;
 }
 
 /* =========================
@@ -212,6 +218,16 @@ body {
     height: 9px;
     display: block;
 }
+
+    .site-footer {
+        height: auto;
+        padding: 40px 0;
+    }
+
+    .footer-menu {
+        flex-direction: column;
+        gap: 24px;
+    }
 
     /* BOUTON BURGER */
     .burger-menu {
