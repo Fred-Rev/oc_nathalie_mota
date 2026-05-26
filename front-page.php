@@ -8,19 +8,47 @@
     </section>
 
     <section class="photo-filters">
-        <select id="filter-category">
-            <option value="">Catégories</option>
-        </select>
 
-        <select id="filter-format">
-            <option value="">Formats</option>
-        </select>
+    <select id="filter-category">
+        <option value="">Catégories</option>
 
-        <select id="filter-sort">
-            <option value="DESC">Plus récentes</option>
-            <option value="ASC">Plus anciennes</option>
-        </select>
-    </section>
+        <?php
+        $categories = get_terms([
+            'taxonomy' => 'categorie',
+            'hide_empty' => true
+        ]);
+
+        foreach ($categories as $category) :
+        ?>
+            <option value="<?php echo $category->slug; ?>">
+                <?php echo $category->name; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+
+    <select id="filter-format">
+        <option value="">Formats</option>
+
+        <?php
+        $formats = get_terms([
+            'taxonomy' => 'format',
+            'hide_empty' => true
+        ]);
+
+        foreach ($formats as $format) :
+        ?>
+            <option value="<?php echo $format->slug; ?>">
+                <?php echo $format->name; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+
+    <select id="filter-sort">
+        <option value="DESC">Plus récentes</option>
+        <option value="ASC">Plus anciennes</option>
+    </select>
+
+</section>
 
     <section class="home-gallery">
         <div class="home-gallery-grid" id="photo-list">

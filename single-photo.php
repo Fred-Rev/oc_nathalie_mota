@@ -37,11 +37,11 @@
 
         <div class="photo-navigation">
             <div class="photo-prev">
-                <?php previous_post_link('%link', '← Précédent'); ?>
+                <?php previous_post_link('%link', '←'); ?>
             </div>
 
             <div class="photo-next">
-                <?php next_post_link('%link', 'Suivant →'); ?>
+                <?php next_post_link('%link', '→'); ?>
             </div>
         </div>
 
