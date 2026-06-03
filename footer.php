@@ -1,20 +1,21 @@
 <footer class="site-footer">
 
-    <div class="container">
-        <nav class="footer-nav">
-            <?php
-            wp_nav_menu([
-                'theme_location' => 'footer-menu',
-                'container' => false,
-                'menu_class' => 'footer-menu'
-            ]);
-            ?>
-        </nav>
+   <div class="footer-content">
 
-        
+        <a href="<?php echo home_url('/mentions-legales'); ?>">
+            Mentions légales
+        </a>
+
+        <a href="<?php echo get_privacy_policy_url(); ?>">
+            Vie privée
+        </a>
+
+        <span>Tous droits réservés</span>
+
     </div>
 
 </footer>
+
 <?php get_template_part('template-parts/modal-contact'); ?>
 
 <div class="lightbox hidden">
@@ -23,11 +24,11 @@
 
     <button class="lightbox-prev">
     ⟵ <span>Précédente</span>
-</button>
+    </button>
 
-<button class="lightbox-next">
+    <button class="lightbox-next">
     <span>Suivante</span> ⟶
-</button>
+    </button>
     <div class="lightbox-content">
 
         <img class="lightbox-image" src="" alt="">
@@ -40,8 +41,6 @@
         </div>
 
     </div>
-
-    <button class="lightbox-next">⟶</button>
 
 </div>
 <?php wp_footer(); ?>

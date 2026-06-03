@@ -16,6 +16,28 @@ body {
     width: 100%;
 }
 /* =========================
+   PAGES
+========================= */
+
+.page-content {
+    max-width: 1148px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.page-content h1 {
+    margin-bottom: 40px;
+
+    font-family: 'Space Mono', monospace;
+    font-size: 48px;
+    text-transform: uppercase;
+}
+
+.page-text {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.8;
+}
+/* =========================
    MODALE
 ========================= */
 
@@ -82,21 +104,17 @@ body {
     justify-content: center;
 }
 
-.footer-menu {
+.footer-content {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 86px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
-.footer-menu a {
+.footer-content a,
+.footer-content span {
     font-family: 'Space Mono', monospace;
-    font-weight: 400;
     font-size: 16px;
-    line-height: 100%;
     text-transform: uppercase;
     text-decoration: none;
     color: black;
@@ -227,7 +245,7 @@ body {
         padding: 40px 0;
     }
 
-    .footer-menu {
+    .footer-content {
         flex-direction: column;
         gap: 24px;
     }
@@ -518,21 +536,29 @@ body {
 @media (max-width: 768px) {
 
     .single-photo {
-        padding: 30px 20px;
+        padding: 30px 0;
+    }
+
+    .single-photo-content,
+    .related-photos {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .single-photo-content {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 24px;
-}
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 24px;
+    }
 
     .single-photo-info,
     .single-photo-image {
         width: 100%;
+        max-width: 100%;
     }
 
     .single-photo-info {
+        padding-right: 0;
         padding-bottom: 28px;
     }
 
@@ -550,14 +576,22 @@ body {
     .single-photo-image img {
         width: 100%;
         height: auto;
-        object-fit: cover;
+        object-fit: contain;
+    }
+
+    .photo-interactions {
+        margin-left: 20px;
+        margin-right: 20px;
+        height: auto;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px 0;
     }
 
     .photo-contact {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
-        padding: 28px 0;
     }
 
     .photo-contact-button {
@@ -565,10 +599,7 @@ body {
     }
 
     .photo-navigation {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 32px;
+        display: none;
     }
 }
 /* =========================
@@ -897,4 +928,12 @@ body {
 
 .lightbox-next {
     right: 40px;
+}
+
+.lightbox-close {
+    top: 40px;
+    right: 40px;
+    z-index: 2100;
+    font-size: 32px;
+    line-height: 1;
 }
