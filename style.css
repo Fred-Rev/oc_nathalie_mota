@@ -161,10 +161,12 @@ body {
 }
 
 .related-photos h2 {
-    text-transform: uppercase;
-    font-size: 18px;
+    font-family: 'Space Mono', monospace;
     font-weight: 400;
-    margin-bottom: 40px;
+    font-size: 18px;
+    line-height: 100%;
+    text-transform: uppercase;
+    margin: 0 0 40px;
 }
 
 .related-photos-grid {
@@ -343,19 +345,20 @@ body {
     display: grid;
     grid-template-columns: 50% 50%;
     align-items: end;
+    
 }
 
-.single-photo-interaction {
-    height: 118px;
-}
 
 .single-photo-info {
     width: 100%;
+    max-width: 420px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 20px;
     position: relative;
     padding-right: 21px;
+    padding-bottom: 38px;
 }
 
 .single-photo-info::after {
@@ -363,7 +366,7 @@ body {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 100% ;
+    width: 564px;
     height: 1px;
     background: #000000;
 }
@@ -396,8 +399,7 @@ body {
 
 .single-photo-image img {
     width: 100%;
-    height: 100vh;
-    max-height: 844px;
+    height: 844px;
     object-fit: contain;
     object-position: right bottom;
     display: block;
@@ -490,11 +492,21 @@ body {
 .photo-nav-arrows {
     display: flex;
     gap: 32px;
+    flex-wrap: nowrap;
 }
 
 .photo-nav-arrows a {
+    width: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
+
     text-decoration: none;
     color: black;
+
     font-size: 32px;
     line-height: 1;
 }

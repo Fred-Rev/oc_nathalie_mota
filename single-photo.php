@@ -11,8 +11,24 @@
                 <h1><?php the_title(); ?></h1>
 
                 <p>Référence : <?php echo get_post_meta(get_the_ID(), 'reference', true); ?></p>
-                <p>Catégorie : <?php the_terms(get_the_ID(), 'categorie'); ?></p>
-                <p>Format : <?php the_terms(get_the_ID(), 'format'); ?></p>
+                <p>
+                Catégorie :
+                <?php
+                $categories = get_the_terms(get_the_ID(), 'categorie');
+                if ($categories) {
+                echo esc_html($categories[0]->name);
+                }
+                ?>
+                </p>
+                <p>
+                Format :
+                <?php
+                $formats = get_the_terms(get_the_ID(), 'format');
+                if ($formats) {
+                echo esc_html($formats[0]->name);
+                }
+                ?>
+                </p>
                 <p>Type : <?php echo get_post_meta(get_the_ID(), 'type', true); ?></p>
                 <p>Année : <?php echo get_the_date('Y'); ?></p>
 
