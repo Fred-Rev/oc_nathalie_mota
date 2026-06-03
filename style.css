@@ -156,7 +156,8 @@ body {
 ========================= */
 
 .related-photos {
-    padding: 60px 0;
+    padding: 80px 0 109px;
+ 
 }
 
 .related-photos h2 {
@@ -328,23 +329,33 @@ body {
 ========================= */
 
 .single-photo {
-    padding: 60px 40px;
+    padding-top: 38px;
 }
 
+.single-photo-content,
+.related-photos {
+    padding-left: 144px;
+    padding-right: 144px;
+}
+
+
 .single-photo-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: end;
+}
+
+.single-photo-interaction {
+    height: 118px;
 }
 
 .single-photo-info {
-    width: 420px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
     position: relative;
-    padding-bottom: 37px;
+    padding-right: 21px;
 }
 
 .single-photo-info::after {
@@ -352,12 +363,13 @@ body {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 564px;
+    width: 100% ;
     height: 1px;
     background: #000000;
 }
 
 .single-photo-info h1 {
+    margin: 0;
     font-family: 'Space Mono', monospace;
     font-weight: 400;
     font-style: italic;
@@ -377,12 +389,17 @@ body {
 }
 
 .single-photo-image {
-    width: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
+
 .single-photo-image img {
     width: 100%;
-    height: 80vh;
-    object-fit: cover;
+    height: 100vh;
+    max-height: 844px;
+    object-fit: contain;
+    object-position: right bottom;
     display: block;
 }
 
@@ -390,14 +407,21 @@ body {
    CONTACT SINGLE PHOTO
 ========================= */
 
-.photo-contact {
-    display: flex;
-    gap: 96px;
+.photo-interactions {
+    margin-left: 144px;
+    margin-right: 144px;
+    height: 118px;
+    display: grid;
+    grid-template-columns: 50% 50%;
     align-items: center;
-
-    padding: 40px 0;
-
     border-bottom: 1px solid black;
+}
+
+.photo-contact {
+    justify-self: start;
+    display: flex;
+    align-items: center;
+    gap: 96px;
 }
 
 .photo-contact p {
@@ -428,6 +452,53 @@ body {
     color: white;
 }
 
+.photo-navigation {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+.photo-navigation a {
+    text-decoration: none;
+    color: black;
+    font-size: 32px;
+    line-height: 1;
+}
+
+.photo-navigation a:hover {
+    text-decoration: none;
+}
+
+.photo-navigation {
+    justify-self: end;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    gap: 8px;
+}
+
+.photo-nav-thumbnail img {
+    width: 81px;
+    height: 71px;
+    margin-top: 8px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-nav-arrows {
+    display: flex;
+    gap: 32px;
+}
+
+.photo-nav-arrows a {
+    text-decoration: none;
+    color: black;
+    font-size: 32px;
+    line-height: 1;
+}
+
 /* =========================
    MOBILE SINGLE PHOTO
 ========================= */
@@ -439,46 +510,66 @@ body {
     }
 
     .single-photo-content {
-        flex-direction: column-reverse;
-        align-items: stretch;
-    }
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 24px;
+}
 
     .single-photo-info,
     .single-photo-image {
         width: 100%;
     }
 
-    .single-photo-image img {
-        height: auto;
+    .single-photo-info {
+        padding-bottom: 28px;
+    }
+
+    .single-photo-info::after {
+        width: 100%;
     }
 
     .single-photo-info h1 {
         font-size: 32px;
         line-height: 36px;
+        margin: 0;
+        word-break: break-word;
     }
 
-    .single-photo-info::after {
-    width: 100%;
-}
+    .single-photo-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
 
     .photo-contact {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
+        padding: 28px 0;
     }
 
     .photo-contact-button {
         width: 100%;
     }
-    
+
+    .photo-navigation {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 32px;
+    }
 }
 /* =========================
    HERO HOME
 ========================= */
 
 .hero-home {
+
+    width: 100%;
+
     height: calc(100vh - 80px);
     min-height: 600px;
+    max-height: 966px;
 
     background-size: cover;
     background-position: center;
@@ -504,7 +595,10 @@ body {
 @media (max-width: 768px) {
 
     .hero-home {
-        height: 50vh;
+        width: 100%;
+        height: 253px;
+        min-height: 0;
+        max-height: none;
     }
 
     .hero-home h1 {
@@ -515,17 +609,88 @@ body {
 }
 
 /* =========================
+   FILTERS
+========================= */
+
+.photo-filters {
+    max-width: 1148px;
+    margin: 0 auto;
+    padding: 80px 0 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photo-filters-left {
+    display: flex;
+    gap: 36px;
+}
+
+.photo-filters-right {
+    display: flex;
+}
+
+.photo-filters select {
+    width: 260px;
+    height: 43px;
+
+    padding: 0 18px;
+
+    border: 1px solid #B8BBC2;
+    background: white;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    .photo-filters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+
+    padding: 40px 20px 24px;
+}
+
+.photo-filters-left,
+.photo-filters-right {
+    flex-direction: column;
+    gap: 8px;
+}
+
+.photo-filters select {
+    width: 100%;
+}
+}
+
+
+
+/* =========================
    HOME GALLERY
 ========================= */
 
 .home-gallery {
-    padding: 80px 100px;
+    max-width: 1148px;
+    margin: 0 auto 80px;
+    padding: 0;
 }
 
 .home-gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+}
+
+.home-gallery-grid .photo-block img {
+    width: 100%;
+    height: 495px;
+    object-fit: cover;
+    display: block;
 }
 
 #load-more-photos {
@@ -555,11 +720,17 @@ body {
 @media (max-width: 768px) {
 
     .home-gallery {
-        padding: 40px 20px;
+        padding: 0 20px 40px;
     }
 
     .home-gallery-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .home-gallery-grid .photo-block img {
+        width: 100%;
+        height: 278px;
     }
 
     #load-more-photos {

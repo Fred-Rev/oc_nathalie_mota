@@ -9,44 +9,53 @@
 
     <section class="photo-filters">
 
-    <select id="filter-category">
-        <option value="">Catégories</option>
+    <div class="photo-filters-left">
 
-        <?php
-        $categories = get_terms([
-            'taxonomy' => 'categorie',
-            'hide_empty' => true
-        ]);
+        <select id="filter-category">
+            <option value="">CATÉGORIES</option>
 
-        foreach ($categories as $category) :
-        ?>
-            <option value="<?php echo $category->slug; ?>">
-                <?php echo $category->name; ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+            <?php
+            $categories = get_terms([
+                'taxonomy' => 'categorie',
+                'hide_empty' => true
+            ]);
 
-    <select id="filter-format">
-        <option value="">Formats</option>
+            foreach ($categories as $category) :
+            ?>
+                <option value="<?php echo $category->slug; ?>">
+                    <?php echo $category->name; ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
 
-        <?php
-        $formats = get_terms([
-            'taxonomy' => 'format',
-            'hide_empty' => true
-        ]);
+        <select id="filter-format">
+            <option value="">FORMATS</option>
 
-        foreach ($formats as $format) :
-        ?>
-            <option value="<?php echo $format->slug; ?>">
-                <?php echo $format->name; ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+            <?php
+            $formats = get_terms([
+                'taxonomy' => 'format',
+                'hide_empty' => true
+            ]);
 
-    <select id="filter-sort">
-        <option value="DESC">Plus récentes</option>
-        <option value="ASC">Plus anciennes</option>
-    </select>
+            foreach ($formats as $format) :
+            ?>
+                <option value="<?php echo $format->slug; ?>">
+                    <?php echo $format->name; ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+
+    </div>
+
+    <div class="photo-filters-right">
+
+        <select id="filter-sort">
+            <option value="">TRIER PAR</option>
+            <option value="DESC">Plus récentes</option>
+            <option value="ASC">Plus anciennes</option>
+        </select>
+
+    </div>
 
 </section>
 
