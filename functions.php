@@ -35,6 +35,14 @@ function theme_assets() {
         true
     );
 
+    wp_enqueue_script(
+    'lightbox-script',
+    get_template_directory_uri() . '/assets/js/lightbox.js',
+    [],
+    false,
+    true
+);
+
     wp_localize_script(
         'main-script',
         'nathalie_ajax',
