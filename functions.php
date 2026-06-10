@@ -36,12 +36,20 @@ function theme_assets() {
     );
 
     wp_enqueue_script(
-    'lightbox-script',
-    get_template_directory_uri() . '/assets/js/lightbox.js',
-    [],
-    false,
-    true
-);
+        'lightbox-script',
+        get_template_directory_uri() . '/assets/js/lightbox.js',
+        [],
+        false,
+        true
+    );
+
+    wp_enqueue_script(
+        'custom-selects-script',
+        get_template_directory_uri() . '/assets/js/custom-selects.js',
+        [],
+        false,
+        true
+    );
 
     wp_localize_script(
         'main-script',
