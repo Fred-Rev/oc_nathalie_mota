@@ -6,20 +6,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const lightboxCategory = document.querySelector(".lightbox-category");
 
     const closeLightbox = document.querySelector(".lightbox-close");
-
     const prevButton = document.querySelector(".lightbox-prev");
     const nextButton = document.querySelector(".lightbox-next");
-
-    const fullscreenButtons = document.querySelectorAll(".photo-fullscreen");
 
     if (!lightbox) return;
 
     let currentIndex = 0;
 
-    // Fonction affichage photo
-    function showPhoto(index) {
+    function getFullscreenButtons() {
+        return Array.from(document.querySelectorAll(".photo-fullscreen"));
+    }
 
-        const button = fullscreenButtons[index];
+    function showPhoto(index) {
+        const buttons = getFullscreenButtons();
+        const button = buttons[index];
+
+        if (!button) return;
 
         lightboxImage.src = button.dataset.image;
         lightboxImage.alt = button.dataset.title;
@@ -30,61 +32,53 @@ document.addEventListener("DOMContentLoaded", function () {
         currentIndex = index;
     }
 
-    // Ouverture lightbox
-    fullscreenButtons.forEach((button, index) => {
+    document.addEventListener("click", function (e) {
 
-        button.addEventListener("click", function (e) {
+        const button = e.target.closest(".photo-fullscreen");
 
-            e.preventDefault();
+        if (!button) return;
 
-            showPhoto(index);
+        e.preventDefault();
 
-            lightbox.classList.remove("hidden");
+        const buttons = getFullscreenButtons();
+        const index = buttons.indexOf(button);
 
-        });
-
+        showPhoto(index);
+        lightbox.classList.remove("hidden");
     });
 
-    // Fermeture
     closeLightbox.addEventListener("click", function () {
-
         lightbox.classList.add("hidden");
-
     });
 
-    // Clic overlay
     lightbox.addEventListener("click", function (e) {
-
         if (e.target === lightbox) {
             lightbox.classList.add("hidden");
         }
-
     });
 
-    // Photo précédente
     prevButton.addEventListener("click", function () {
+        const buttons = getFullscreenButtons();
 
         let newIndex = currentIndex - 1;
 
         if (newIndex < 0) {
-            newIndex = fullscreenButtons.length - 1;
+            newIndex = buttons.length - 1;
         }
 
         showPhoto(newIndex);
-
     });
 
-    // Photo suivante
     nextButton.addEventListener("click", function () {
+        const buttons = getFullscreenButtons();
 
         let newIndex = currentIndex + 1;
 
-        if (newIndex >= fullscreenButtons.length) {
+        if (newIndex >= buttons.length) {
             newIndex = 0;
         }
 
         showPhoto(newIndex);
-
     });
 
 });

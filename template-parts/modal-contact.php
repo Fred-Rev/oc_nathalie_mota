@@ -4,7 +4,10 @@
 
         <button id="close-modal" class="close">&times;</button>
 
-        <h2>Contact</h2>
+        <h2 class="modal-title">
+        CONTACTCONTACTCONTACT<br>
+        CONTACTCONTACTCONTACT
+        </h2>
 
         <?php echo do_shortcode('[contact-form-7 id="83320f9" title="Contact form 1"]'); ?>
 

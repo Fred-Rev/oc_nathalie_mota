@@ -10,27 +10,32 @@
 
                 <h1><?php the_title(); ?></h1>
 
-                <p>Référence : <?php echo get_post_meta(get_the_ID(), 'reference', true); ?></p>
+                <p>Référence : <?php echo esc_html(get_post_meta(get_the_ID(), 'reference', true)); ?></p>
+
                 <p>
-                Catégorie :
-                <?php
-                $categories = get_the_terms(get_the_ID(), 'categorie');
-                if ($categories) {
-                echo esc_html($categories[0]->name);
-                }
-                ?>
+                    Catégorie :
+                    <?php
+                    $categories = get_the_terms(get_the_ID(), 'categorie');
+
+                    if ($categories) {
+                        echo esc_html($categories[0]->name);
+                    }
+                    ?>
                 </p>
+
                 <p>
-                Format :
-                <?php
-                $formats = get_the_terms(get_the_ID(), 'format');
-                if ($formats) {
-                echo esc_html($formats[0]->name);
-                }
-                ?>
+                    Format :
+                    <?php
+                    $formats = get_the_terms(get_the_ID(), 'format');
+
+                    if ($formats) {
+                        echo esc_html($formats[0]->name);
+                    }
+                    ?>
                 </p>
-                <p>Type : <?php echo get_post_meta(get_the_ID(), 'type', true); ?></p>
-                <p>Année : <?php echo get_the_date('Y'); ?></p>
+
+                <p>Type : <?php echo esc_html(get_post_meta(get_the_ID(), 'type', true)); ?></p>
+                <p>Année : <?php echo esc_html(get_the_date('Y')); ?></p>
 
             </div>
 
@@ -47,40 +52,50 @@
                 <p>Cette photo vous intéresse ?</p>
 
                 <button class="photo-contact-button"
-                        data-ref="<?php echo get_post_meta(get_the_ID(), 'reference', true); ?>">
+                        data-ref="<?php echo esc_attr(get_post_meta(get_the_ID(), 'reference', true)); ?>">
                     Contact
                 </button>
 
             </div>
-        
 
             <div class="photo-navigation">
 
-    <div class="photo-nav-thumbnail">
+                <?php
+                $prev_post = get_previous_post();
+                $next_post = get_next_post();
+                ?>
 
-        <?php
-        $next_post = get_next_post();
+                <div class="photo-nav-thumbnail">
 
-        if ($next_post && has_post_thumbnail($next_post->ID)) {
-            echo get_the_post_thumbnail($next_post->ID, 'thumbnail');
-        }
-        ?>
+                    <?php if ($prev_post && has_post_thumbnail($prev_post->ID)) : ?>
+                        <div class="nav-thumb nav-thumb-prev">
+                            <?php echo get_the_post_thumbnail($prev_post->ID, 'thumbnail'); ?>
+                        </div>
+                    <?php endif; ?>
 
-    </div>
+                    <?php if ($next_post && has_post_thumbnail($next_post->ID)) : ?>
+                        <div class="nav-thumb nav-thumb-next">
+                            <?php echo get_the_post_thumbnail($next_post->ID, 'thumbnail'); ?>
+                        </div>
+                    <?php endif; ?>
 
-    <div class="photo-nav-arrows">
+                </div>
 
-        <div class="photo-prev">
-            <?php previous_post_link('%link', '⟵'); ?>
+                <div class="photo-nav-arrows">
+
+                    <div class="photo-prev">
+                        <?php previous_post_link('%link', '⟵'); ?>
+                    </div>
+
+                    <div class="photo-next">
+                        <?php next_post_link('%link', '⟶'); ?>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-
-        <div class="photo-next">
-            <?php next_post_link('%link', '⟶'); ?>
-        </div>
-
-    </div>
-</div>
-</div>
 
         <section class="related-photos">
 
