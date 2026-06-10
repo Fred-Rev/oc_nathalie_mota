@@ -73,7 +73,7 @@ Le projet comprend :
 ### Cloner le repository
 
 ```bash
-git clone URL_DU_REPO
+git clone https://github.com/Fred-Rev/oc_nathalie_mota.git
 ```
 
 ### Copier le thème dans
